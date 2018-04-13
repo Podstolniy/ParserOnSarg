@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+#my_unicode_string = u"This's Unicode!"
+#!/usr/bin/python
+
+import os
+import platform
+import csv
+import subprocess
+import sys
+import argparse
+import json
+import math
+import abc
+from collections import Counter
+
+
+def fullfile(args):
+	
+	if os.path.exists(args.d[0])==False:
+		print('Not Dir')
+	else:
+		cat={}
+		cat=os.listdir(args.d[0])
+		for p in cat:
+					print(p,'=',os.path.getsize(args.d[0]+'/'+p))
+				
+def dirParser():
+	parser = argparse.ArgumentParser()
+	parser.add_argument ('d',action='store', nargs='*', help = 'pars', type = str, metavar = 'Name')
+	return parser
+
+def main():
+	parser = dirParser()
+	
+	args = parser.parse_args()
+	if args.d == []:
+		print('Not Argument!!!')
+		
+	else:
+		fullfile(args)
+		
+if __name__ == '__main__':
+	main()
