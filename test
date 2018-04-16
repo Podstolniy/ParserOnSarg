@@ -19,11 +19,16 @@ def fullfile(args):
 	if os.path.exists(args.d[0])==False:
 		print('Not Dir')
 	else:
-		cat={}
 		cat=os.listdir(args.d[0])
+		size=[]
+		s=0
 		for p in cat:
-					print(p,'=',os.path.getsize(args.d[0]+'/'+p))
-				
+					size.append(((os.path.getsize(args.d[0]+'/'+p)),p))
+					s=s+1
+		a=sorted(size)
+		for sorti in a:
+					print(sorti)	# проверка отображения
+
 def dirParser():
 	parser = argparse.ArgumentParser()
 	parser.add_argument ('d',action='store', nargs='*', help = 'pars', type = str, metavar = 'Name')
