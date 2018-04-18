@@ -13,7 +13,6 @@ import math
 import abc
 from collections import Counter
 
-
 def fullfile(args):
 	
 	if os.path.exists(args.d[0])==False:
@@ -23,15 +22,17 @@ def fullfile(args):
 		size=[]
 		s=0
 		for p in cat:
-					size.append(((os.path.getsize(args.d[0]+'/'+p)),p))
-					s=s+1
-		a=sorted(size)
+					if os.path.getsize(args.d[0]+'/'+p)>=args.size: # размер в байтах по ключу -size 
+						size.append(((os.path.getsize(args.d[0]+'/'+p)),p))
+						s=s+1
+		a=sorted(size,reverse = True) # сортируем по убыванию
 		for sorti in a:
 					print(sorti)	# проверка отображения
 
 def dirParser():
 	parser = argparse.ArgumentParser()
 	parser.add_argument ('d',action='store', nargs='*', help = 'pars', type = str, metavar = 'Name')
+	parser.add_argument ('-size', type = int, default=0)
 	return parser
 
 def main():
