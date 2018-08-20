@@ -22,12 +22,12 @@ def fullfile(args):
 		size=[]
 		s=0
 		for p in cat:
-					if os.path.getsize(args.d[0]+'/'+p)>=args.size: # размер в байтах по ключу -size 
-						size.append(((os.path.getsize(args.d[0]+'/'+p)),p))
-						s=s+1
+			if os.path.getsize(args.d[0]+'/'+p)>=args.size: # размер в байтах по ключу -size 
+				size.append(((os.path.getsize(args.d[0]+'/'+p)),p))
+				s=s+1
 		a=sorted(size,reverse = True) # сортируем по убыванию
 		for sorti in a:
-					print(sorti)	# проверка отображения
+			print(sorti)	# проверка отображения
 
 def dirParser():
 	parser = argparse.ArgumentParser()
